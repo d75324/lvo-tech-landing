@@ -1,72 +1,411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LVO</title>
-    <link rel="icon" href="static/flor.ico?v=2" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>LVO Tech | Desarrollo de Software con Python & Django</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Centrar el h1 y colocarlo a 1/4 de la pantalla */
-        .mt-25vh {
-            margin-top: 25vh; /* 25% de la altura de la ventana */
+        /* PALETA DE COLORES (Inspirada en Aidcom) */
+        :root {
+            --primary-dark: #0f172a;  
+            --primary-blue: #0284c7;  
+            --primary-hover: #0369a1; 
+            --bg-light: #f8fafc;      
+            --bg-white: #ffffff;      
+            --text-main: #334155;     
+            --text-muted: #64748b;    
+            --accent-soft: #e0f2fe;   
         }
 
-        /* Cambiar el color del h1 a gris oscuro */
-        .h1-gris-oscuro {
-            color: #333333; /* Color gris oscuro en hexadecimal */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Posicionar el p en la parte inferior derecha */
-        .position-bottom-right {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            margin: 20px; /* Añadir un pequeño margen para que no esté pegado al borde */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+            line-height: 1.5;
         }
 
-        /* Asegurar que el contenedor tenga una altura mínima y posición relativa */
-        .container {
-            position: relative;
-            min-height: 100vh; /* Hacer que el contenedor ocupe al menos el 100% de la altura de la pantalla */
+        /* Navbar compacta */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary-blue); }
+
+        /* Hero Section Compacto */
+        .hero {
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.3rem;
+            color: var(--primary-dark);
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.75rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        /* Estilo para el botón de registro */
-        .btn-registro {
-            background-color: #6c757d;
-            border-color: #6c757d;
+        /* Botones */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+            border: none;
+        }
+        .btn-primary:hover { background-color: var(--primary-hover); }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-dark);
+            border: 2px solid #cbd5e1;
+        }
+        .btn-secondary:hover {
+            background-color: #f1f5f9;
+            border-color: var(--primary-dark);
+        }
+
+        /* Contenedores Genéricos */
+        section {
+            padding: 3.5rem 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.75rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        /* Grid de Enfoque Dual */
+        .grid-two {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card-audience {
+            background-color: var(--bg-white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+        .card-audience h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card-audience h3 i { color: var(--primary-blue); }
+        .card-audience ul { list-style: none; }
+        .card-audience ul li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .card-audience ul li i { color: var(--primary-blue); font-size: 0.85rem; }
+
+        /* Sección de IA Compacta */
+        .ia-pain-section {
+            background-color: var(--primary-dark);
+            color: var(--bg-white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .ia-text {
+            flex: 1.2;
+            min-width: 280px;
+        }
+        .ia-text h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+        .ia-text span { color: #38bdf8; }
+        .ia-text p { color: #94a3b8; font-size: 0.95rem; }
+        .ia-box {
+            flex: 0.8;
+            min-width: 260px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--primary-blue);
+            padding: 1.25rem;
+            border-radius: 0 6px 6px 0;
+        }
+        .ia-box p { font-style: italic; color: #cbd5e1; font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+        /* Qué Hago (Servicios Integrados con Demo Compacta) */
+        .bg-light-sec {
+            background-color: var(--bg-light);
+        }
+        .grid-three-plus-one {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+        .service-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+        .icon-shape {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-soft);
+            color: var(--primary-blue);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 { color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.15rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Tarjeta de Demo en tamaño proporcional al grid */
+        .demo-card-compact {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            padding: 10px 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        
-        .btn-registro:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        .demo-card-compact .tag-dev {
+            color: #38bdf8;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .demo-card-compact h3 { color: white; font-size: 1.2rem; margin: 0.25rem 0; }
+        .demo-card-compact p { font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem; }
+        .demo-card-compact .btn-demo {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .demo-card-compact .btn-demo:hover { color: #38bdf8; }
+
+        /* Pie de página unificado */
+        footer {
+            background-color: var(--primary-dark);
+            color: #94a3b8;
+            padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+        .cta-container {
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+        }
+        .cta-container h2 { color: var(--bg-white); font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .cta-container .frase-escucha {
+            color: #38bdf8;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .social-links a:hover { color: var(--primary-blue); }
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .ia-pain-section { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center mt-25vh h1-gris-oscuro">Todo comienza aqui...</h1>
-                
-                <!-- Botón de Registro centrado debajo del mensaje -->
-                <div class="text-center mt-4">
-                    <a href="https://autocare.lvo-tech.com" class="btn btn-registro">autocare</a>
-                </div>
-                <div class="position-bottom-right">
-                    <a href="mailto: LVO <websegura.co@gmail.com>?subject=Hola! Te escribo desde LHCDj" class="btn btn-sm btn-outline-secondary">Escribime!</a>
-                </div>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">LVO<span>tech</span></a>
+            <a href="#contacto" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Hablemos</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Convertimos tu idea o necesidad en software que realmente funciona para vos</h1>
+            <p>Trabajo con pequeñas y medianas empresas, y con emprendedores que tienen una idea clara —o no tan clara— y necesitan ayuda para materializarla.</p>
+            <div class="btn-group">
+                <a href="#contacto" class="btn btn-primary">Contame tu proyecto</a>
+                <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
             </div>
         </div>
+    </section>
+
+    <section id="audiencia">
+        <h2 class="section-title">¿Para quién trabajo?</h2>
+        <div class="grid-two">
+            <div class="card-audience">
+                <h3><i class="fa-solid fa-building"></i> PyMEs & empresas</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Automatización de procesos manuales</li>
+                    <li><i class="fa-solid fa-check"></i> Aplicaciones internas a medida</li>
+                    <li><i class="fa-solid fa-check"></i> Mejoras sobre sistemas existentes</li>
+                    <li><i class="fa-solid fa-check"></i> Software que puede escalar o revenderse</li>
+                </ul>
+            </div>
+            <div class="card-audience">
+                <h3><i class="fa-solid fa-rocket"></i> Emprendedores</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> MVP para validar tu idea</li>
+                    <li><i class="fa-solid fa-check"></i> Desarrollo del producto que imaginás</li>
+                    <li><i class="fa-solid fa-check"></i> Iteraciones rápidas según feedback</li>
+                    <li><i class="fa-solid fa-check"></i> Acompañamiento técnico desde cero</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 0; padding-bottom: 3rem;">
+        <div class="ia-pain-section">
+            <div class="ia-text">
+                <h2>¿Aún usando IA te resulta difícil hacer <span>funcionar tu APP?</span></h2>
+                <p>Las herramientas de IA dan bloques sueltos de código, pero armar una estructura estable, segura y lista para producción requiere criterio técnico real.</p>
+            </div>
+            <div class="ia-box">
+                <p>"La IA te da los ladrillos, pero seguís necesitando al arquitecto para que la estructura funcione."</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-light-sec" id="servicios">
+        <section>
+            <h2 class="section-title">Lo que hago</h2>
+            <div class="grid-three-plus-one">
+                <div class="service-card">
+                    <div class="icon-shape"><i class="fa-solid fa-code"></i></div>
+                    <h3>Aplicaciones web</h3>
+                    <p>Desarrollo completo con Python y Django, listas para producción.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon-shape"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Automatización</h3>
+                    <p>Reemplazamos tareas manuales por procesos automáticos que ahorran tiempo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon-shape"><i class="fa-solid fa-circle-nodes"></i></div>
+                    <h3>Integraciones</h3>
+                    <p>Conectamos sistemas existentes o APIs para que todo fluya.</p>
+                </div>
+                
+                <div class="demo-card-compact">
+                    <div>
+                        <span class="tag-dev">Caso de Éxito Real</span>
+                        <h3>AutoCare</h3>
+                        <p>Aplicación web de gestión diseñada específicamente para el sector automotriz.</p>
+                    </div>
+                    <a href="https://autocare.lvo-tech.com" target="_blank" class="btn-demo">Ver demo en vivo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <footer id="contacto">
+        <div class="cta-container">
+            <h2>¿Tenés algo en mente?</h2>
+            <p class="frase-escucha">"Tu consulta no molesta, estamos encantados de escuchar tu idea."</p>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">No hace falta tener todo claro para hablar. Contame lo que estás pensando y vemos juntos si puedo ayudarte. Sin compromiso.</p>
+            <a href="https://wa.me/5491131509706" target="_blank" class="btn btn-primary" style="background-color: #25d366;"><i class="fa-brands fa-whatsapp"></i> Empezar la conversación</a>
+        </div>
+
+        <div class="social-links">
+            <a href="mailto:websegura.co@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a href="https://www.linkedin.com/in/veraluis/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LVO Tech. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
