@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232952e3'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='24' fill='%23ffffff'%3ELVO%3C/text%3E%3C/svg%3E">
-    <style>
 
+    <style>
         /* PALETA DE COLORES (Inspirada en Aidcom) */
         :root {
             --primary-dark: #0f172a;
@@ -58,7 +58,23 @@
             font-weight: 700;
             color: var(--primary-dark);
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
         }
+        .logo .logo-tech { color: var(--text-muted); }
+        .logo .logo-dot {
+            width: 6px;
+            height: 6px;
+            margin-left: 3px;
+            border-radius: 1px;
+            background-color: var(--logo-blue);
+        }
+        .logo-footer {
+            color: #ffffff;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .logo-footer .logo-tech { color: #94a3b8; }
 
         /* Hero Section Compacto */
         .hero {
@@ -311,8 +327,7 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">LVO<span class="logo-tech">tech</span><span class="logo-dot"></span>
-            </a>
+            <a href="#" class="logo">LVO<span class="logo-tech">tech</span><span class="logo-dot"></span></a>
             <a href="#contacto" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Hablemos</a>
         </div>
     </header>
@@ -383,7 +398,7 @@
                     <h3>Integraciones</h3>
                     <p>Conección de sistemas existentes o APIs, para que todo fluya.</p>
                 </div>
-                
+
                 <div class="demo-card-compact">
                     <div>
                         <span class="tag-dev">Caso de Éxito Real</span>
@@ -392,6 +407,7 @@
                     </div>
                     <a href="https://autocare.lvo-tech.com" target="_blank" class="btn-demo">Conocer mas <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
+
                 <div class="demo-card-compact">
                     <div>
                         <span class="tag-dev">Caso de Éxito Real</span>
