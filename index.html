@@ -21,7 +21,6 @@
             --text-main: #334155;
             --text-muted: #64748b;
             --accent-soft: #e0f2fe;
-            --logo-blue: #2952e3;
         }
 
         * {
@@ -58,23 +57,8 @@
             font-weight: 700;
             color: var(--primary-dark);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
         }
-        .logo .logo-tech { color: var(--text-muted); }
-        .logo .logo-dot {
-            width: 6px;
-            height: 6px;
-            margin-left: 3px;
-            border-radius: 1px;
-            background-color: var(--logo-blue);
-        }
-        .logo-footer {
-            color: #ffffff;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        .logo-footer .logo-tech { color: #94a3b8; }
+        .logo span { color: var(--primary-blue); }
 
         /* Hero Section Compacto */
         .hero {
@@ -181,12 +165,17 @@
         .card-audience ul li i { color: var(--primary-blue); font-size: 0.85rem; }
 
         /* Sección de IA Compacta */
+        .ia-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
         .ia-pain-section {
+            grid-column: span 3;
             background-color: var(--primary-dark);
             color: var(--bg-white);
             border-radius: 12px;
             padding: 2.5rem;
-            margin: 1rem auto;
             display: flex;
             align-items: center;
             gap: 2rem;
@@ -219,7 +208,7 @@
         }
         .grid-three-plus-one {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.25rem;
         }
         .service-card {
@@ -320,6 +309,14 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .ia-pain-section { padding: 1.5rem; }
+            .ia-showcase-grid { grid-template-columns: 1fr; }
+            .grid-three-plus-one { grid-template-columns: 1fr; }
+            .ia-pain-section { grid-column: span 1; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .ia-showcase-grid { grid-template-columns: repeat(2, 1fr); }
+            .ia-pain-section { grid-column: span 1; }
+            .grid-three-plus-one { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -327,7 +324,7 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">LVO<span class="logo-tech">tech</span><span class="logo-dot"></span></a>
+            <a href="#" class="logo">LVO<span>tech</span></a>
             <a href="#contacto" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Hablemos</a>
         </div>
     </header>
@@ -368,13 +365,24 @@
     </section>
 
     <section style="padding-top: 0; padding-bottom: 3rem;">
-        <div class="ia-pain-section">
-            <div class="ia-text">
-                <h2>¿Aún usando IA te resulta difícil hacer <span>funcionar tu APP?</span></h2>
-                <p>Las herramientas de IA dan bloques sueltos de código, pero armar una estructura estable, segura y lista para producción requiere criterio técnico real.</p>
+        <div class="ia-showcase-grid">
+            <div class="ia-pain-section">
+                <div class="ia-text">
+                    <h2>¿Aún usando IA te resulta difícil hacer <span>funcionar tu APP?</span></h2>
+                    <p>Las herramientas de IA dan bloques sueltos de código, pero armar una estructura estable, segura y lista para producción requiere criterio técnico real.</p>
+                </div>
+                <div class="ia-box">
+                    <p>"La IA te da los ladrillos, pero seguís necesitando al arquitecto para que la estructura funcione."</p>
+                </div>
             </div>
-            <div class="ia-box">
-                <p>"La IA te da los ladrillos, pero seguís necesitando al arquitecto para que la estructura funcione."</p>
+
+            <div class="demo-card-compact">
+                <div>
+                    <span class="tag-dev">Caso de Éxito Real</span>
+                    <h3>StockV</h3>
+                    <p>Sistema de gestión de stock e inventario a medida, actualmente en desarrollo.</p>
+                </div>
+                <span class="btn-demo is-soon"><i class="fa-solid fa-screwdriver-wrench"></i> En construcción</span>
             </div>
         </div>
     </section>
@@ -407,21 +415,11 @@
                     </div>
                     <a href="https://autocare.lvo-tech.com" target="_blank" class="btn-demo">Conocer mas <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
-
-                <div class="demo-card-compact">
-                    <div>
-                        <span class="tag-dev">Caso de Éxito Real</span>
-                        <h3>StockV</h3>
-                        <p>Sistema de gestión de stock e inventario a medida, actualmente en desarrollo.</p>
-                    </div>
-                    <span class="btn-demo is-soon"><i class="fa-solid fa-screwdriver-wrench"></i> En construcción</span>
-                </div>
             </div>
         </section>
     </div>
-
+    <!-- ====== FOOTER ====== -->
     <footer id="contacto">
-        <a href="#" class="logo logo-footer">LVO<span class="logo-tech">tech</span><span class="logo-dot"></span></a>
         <div class="cta-container">
             <h2>¿Tenés algo en mente?</h2>
             <p class="frase-escucha">"Estamos encantados de conocerte y escuchar tu idea."</p>
