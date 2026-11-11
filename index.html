@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LVO Tech | Desarrollo de Software con Python & Django</title>
+    <title>LVO Tech | Software a medida para integradores tecnológicos y empresas</title>
+    <meta name="description" content="Desarrollamos el software detrás de tus soluciones tecnológicas: tótems, kioscos, pantallas, paneles de gestión e integraciones. Para integradores, PyMEs y emprendedores.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -163,6 +164,56 @@
             font-size: 0.95rem;
         }
         .card-audience ul li i { color: var(--primary-blue); font-size: 0.85rem; }
+
+        .card-audience.is-featured {
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.08);
+        }
+        .card-audience .badge {
+            display: inline-block;
+            background-color: var(--accent-soft);
+            color: var(--primary-blue);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: -1.25rem auto 2rem auto;
+            font-size: 1rem;
+        }
+        .step-num {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+        .examples {
+            margin-top: 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+        }
+        .examples span {
+            background-color: var(--bg-white);
+            border: 1px solid #e2e8f0;
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .examples span i { color: var(--primary-blue); }
 
         /* Sección de IA Compacta */
         .ia-showcase-grid {
@@ -331,11 +382,11 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Convertimos tu idea o necesidad en software que realmente funciona para vos</h1>
-            <p>Trabajamos con pequeñas y medianas empresas y con emprendedores que tienen una idea clara —o no tan clara— y necesitan ayuda para hacerla realidad.</p>
+            <h1>Somos el equipo de software detrás de tus soluciones tecnológicas</h1>
+            <p>Si integrás o vendés tecnología —tótems, kioscos, pantallas, salas, control de accesos— nosotros desarrollamos el software que la hace funcionar, con tu marca y para tus clientes. Y si tenés una idea o una necesidad en tu empresa, también te ayudamos a convertirla en software real.</p>
             <div class="btn-group">
-                <a href="#contacto" class="btn btn-primary">Contanos tu proyecto</a>
-                <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+                <a href="#integradores" class="btn btn-primary">Soy integrador</a>
+                <a href="#contacto" class="btn btn-secondary">Tengo una idea o proyecto</a>
             </div>
         </div>
     </section>
@@ -343,28 +394,68 @@
     <section id="audiencia">
         <h2 class="section-title">¿Para quién trabajamos?</h2>
         <div class="grid-two">
-            <div class="card-audience">
-                <h3><i class="fa-solid fa-building"></i> PyMEs & empresas</h3>
+            <div class="card-audience is-featured">
+                <span class="badge">Partner de software</span>
+                <h3><i class="fa-solid fa-microchip"></i> Integradores & proveedores de tecnología</h3>
                 <ul>
-                    <li><i class="fa-solid fa-check"></i> Automatización de procesos manuales</li>
-                    <li><i class="fa-solid fa-check"></i> Aplicaciones internas a medida</li>
-                    <li><i class="fa-solid fa-check"></i> Mejoras sobre sistemas existentes</li>
-                    <li><i class="fa-solid fa-check"></i> Software que puede escalar o revenderse</li>
+                    <li><i class="fa-solid fa-check"></i> Software para tótems, kioscos y pantallas</li>
+                    <li><i class="fa-solid fa-check"></i> Paneles web de gestión y monitoreo remoto</li>
+                    <li><i class="fa-solid fa-check"></i> Integración con el hardware que ya vendés</li>
+                    <li><i class="fa-solid fa-check"></i> Soluciones en marca blanca, con tu nombre</li>
+                    <li><i class="fa-solid fa-check"></i> Soporte y evolución después de la venta</li>
                 </ul>
             </div>
             <div class="card-audience">
-                <h3><i class="fa-solid fa-rocket"></i> Emprendedores</h3>
+                <span class="badge">A medida</span>
+                <h3><i class="fa-solid fa-rocket"></i> PyMEs & emprendedores</h3>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> MVP para validar tu idea</li>
-                    <li><i class="fa-solid fa-check"></i> Desarrollo del producto que imaginás</li>
-                    <li><i class="fa-solid fa-check"></i> Iteraciones rápidas según feedback</li>
+                    <li><i class="fa-solid fa-check"></i> Aplicaciones internas a medida</li>
+                    <li><i class="fa-solid fa-check"></i> Automatización de procesos manuales</li>
+                    <li><i class="fa-solid fa-check"></i> Mejoras sobre sistemas existentes</li>
                     <li><i class="fa-solid fa-check"></i> Acompañamiento técnico desde cero</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section style="padding-top: 0; padding-bottom: 3rem;">
+    <div class="bg-light-sec" id="integradores">
+        <section>
+            <h2 class="section-title">Tu área de desarrollo, sin tener que armarla</h2>
+            <p class="section-subtitle">Vos conocés a tus clientes y el hardware. Nosotros sumamos el software para que puedas ofrecer una solución completa, sin contratar un equipo propio.</p>
+            <div class="grid-three-plus-one">
+                <div class="service-card">
+                    <div class="step-num">01</div>
+                    <h3>Nos traés el caso</h3>
+                    <p>Qué te pide tu cliente, qué equipos vas a instalar y qué tiene que resolver.</p>
+                </div>
+                <div class="service-card">
+                    <div class="step-num">02</div>
+                    <h3>Diseñamos la solución</h3>
+                    <p>Definimos alcance, tiempos y costo para que puedas cotizar con seguridad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="step-num">03</div>
+                    <h3>Desarrollamos e integramos</h3>
+                    <p>Software listo para producción, conectado a tus dispositivos y con tu marca.</p>
+                </div>
+                <div class="service-card">
+                    <div class="step-num">04</div>
+                    <h3>Acompañamos la post-venta</h3>
+                    <p>Soporte, ajustes y nuevas funciones mientras tu cliente lo usa.</p>
+                </div>
+            </div>
+            <div class="examples">
+                <span><i class="fa-solid fa-ticket"></i> Turnos con tótem y pantalla de llamado</span>
+                <span><i class="fa-solid fa-door-open"></i> Reserva de salas con pantalla en la puerta</span>
+                <span><i class="fa-solid fa-tv"></i> Cartelería digital administrable</span>
+                <span><i class="fa-solid fa-id-card"></i> Autoconsulta y check-in</span>
+                <span><i class="fa-solid fa-chart-line"></i> Monitoreo de equipos con alertas</span>
+            </div>
+        </section>
+    </div>
+
+    <section style="padding-top: 3rem; padding-bottom: 3rem;">
         <div class="ia-showcase-grid">
             <div class="ia-pain-section">
                 <div class="ia-text">
@@ -392,19 +483,19 @@
             <h2 class="section-title">Lo que hacemos</h2>
             <div class="grid-three-plus-one">
                 <div class="service-card">
-                    <div class="icon-shape"><i class="fa-solid fa-code"></i></div>
-                    <h3>Aplicaciones web</h3>
-                    <p>Desarrollos completos con Python y Django, listos para producción.</p>
+                    <div class="icon-shape"><i class="fa-solid fa-display"></i></div>
+                    <h3>Software para dispositivos</h3>
+                    <p>Aplicaciones para tótems, kioscos y pantallas, pensadas para el uso del público.</p>
                 </div>
                 <div class="service-card">
-                    <div class="icon-shape"><i class="fa-solid fa-gears"></i></div>
-                    <h3>Automatización</h3>
-                    <p>Reemplazo de tareas manuales por procesos automáticos que ahorran tiempo.</p>
+                    <div class="icon-shape"><i class="fa-solid fa-code"></i></div>
+                    <h3>Aplicaciones y paneles web</h3>
+                    <p>Sistemas de gestión con Python y Django, listos para producción y escalables.</p>
                 </div>
                 <div class="service-card">
                     <div class="icon-shape"><i class="fa-solid fa-circle-nodes"></i></div>
                     <h3>Integraciones</h3>
-                    <p>Conección de sistemas existentes o APIs, para que todo fluya.</p>
+                    <p>Conexión con hardware, sistemas existentes y APIs, para que todo fluya.</p>
                 </div>
 
                 <div class="demo-card-compact">
@@ -421,9 +512,9 @@
     <!-- ====== FOOTER ====== -->
     <footer id="contacto">
         <div class="cta-container">
-            <h2>¿Tenés algo en mente?</h2>
-            <p class="frase-escucha">"Estamos encantados de conocerte y escuchar tu idea."</p>
-            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">¿Todavía no lo tenés del todo claro? No te preocupes, contanos lo que estás pensando y sin compromiso, vemos juntos si podemos concretarlo.</p>
+            <h2>¿Tenés un proyecto o un cliente esperando una solución?</h2>
+            <p class="frase-escucha">"Estamos encantados de conocerte y escuchar lo que necesitás."</p>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Si sos integrador, contanos qué equipos manejás y qué te están pidiendo tus clientes. Si tenés una idea, aunque todavía no esté del todo clara, contanos lo que estás pensando y vemos juntos, sin compromiso, cómo concretarla.</p>
             <a href="https://wa.me/5491131509706" target="_blank" class="btn btn-primary" style="background-color: #25d366;"><i class="fa-brands fa-whatsapp"></i> Empezar la conversación</a>
         </div>
 
